@@ -56,4 +56,10 @@ export const getKnowledgeById = (id) => request.get(`/knowledge/${id}`)
 export const likeKnowledge = (id) => request.post(`/knowledge/${id}/like`)
 export const getHotKnowledge = (limit) => request.get('/knowledge/hot', { params: { limit } })
 
+// 预测分析相关
+export const getPredictionOverview = () => request.get('/prediction/overview')
+export const getAlertPrediction = (period) => request.get('/prediction/alerts', { params: { period } })
+export const getCapacityPrediction = (business) => request.get('/prediction/capacity', { params: { business } })
+export const getFailurePrediction = () => request.get('/prediction/failure')
+
 export default request

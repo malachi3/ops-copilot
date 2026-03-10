@@ -176,7 +176,8 @@ const initCharts = () => {
         { value: 20, name: '网络设备', itemStyle: { color: '#909399' } },
         { value: 25, name: '存储', itemStyle: { color: '#F56C6C' } }
       ]
-    }])
+    }]
+  })
 
   // 工单状态图
   const ticketChart = echarts.init(ticketChartRef.value)

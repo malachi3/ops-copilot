@@ -31,13 +31,17 @@
           <el-icon><Document /></el-icon>
           <span>工单管理</span>
         </el-menu-item>
-        index="/knowledge">
- <el-menu-item          <el-icon><Reading /></el-icon>
+        <el-menu-item index="/knowledge">
+          <el-icon><Reading /></el-icon>
           <span>知识库</span>
         </el-menu-item>
         <el-menu-item index="/dashboard">
           <el-icon><DataBoard /></el-icon>
           <span>运维大屏</span>
+        </el-menu-item>
+        <el-menu-item index="/prediction">
+          <el-icon><TrendCharts /></el-icon>
+          <span>预测分析</span>
         </el-menu-item>
       </el-menu>
     </aside>
@@ -90,7 +94,8 @@ const pageTitle = computed(() => {
     '/assets': '资产管理',
     '/tickets': '工单管理',
     '/knowledge': '知识库',
-    '/dashboard': '运维大屏'
+    '/dashboard': '运维大屏',
+    '/prediction': '预测分析'
   }
   return titles[route.path] || 'OpsCopilot'
 })

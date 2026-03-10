@@ -5,6 +5,7 @@ import AssetsView from '@/views/AssetsView.vue'
 import TicketsView from '@/views/TicketsView.vue'
 import KnowledgeView from '@/views/KnowledgeView.vue'
 import DashboardView from '@/views/DashboardView.vue'
+import PredictionView from '@/views/PredictionView.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/dashboard',
     name: 'Dashboard',
     component: DashboardView
+  },
+  {
+    path: '/prediction',
+    name: 'Prediction',
+    component: PredictionView
   }
 ]
 

@@ -29,14 +29,24 @@ public class ChatResponse {
     private String sessionId;
     
     /**
+     * 图表配置
+     */
+    private Map<String, Object> chart;
+    
+    /**
+     * 表格配置
+     */
+    private Map<String, Object> table;
+    
+    /**
+     * 数据卡片
+     */
+    private List<Map<String, Object>> cards;
+    
+    /**
      * 建议操作
      */
     private List<Suggestion> suggestions;
-    
-    /**
-     * 关联数据
-     */
-    private Map<String, Object> data;
     
     /**
      * 耗时(ms)
