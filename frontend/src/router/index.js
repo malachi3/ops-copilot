@@ -4,6 +4,7 @@ import AlertsView from '@/views/AlertsView.vue'
 import AssetsView from '@/views/AssetsView.vue'
 import TicketsView from '@/views/TicketsView.vue'
 import KnowledgeView from '@/views/KnowledgeView.vue'
+import DashboardView from '@/views/DashboardView.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/knowledge',
     name: 'Knowledge',
     component: KnowledgeView
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashboardView
   }
 ]
 

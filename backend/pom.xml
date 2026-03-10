@@ -20,7 +20,6 @@
     <properties>
         <java.version>17</java.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
-        <spring-ai.version>1.0.0-M4</spring-ai.version>
     </properties>
     
     <dependencies>
@@ -57,11 +56,17 @@
             <optional>true</optional>
         </dependency>
         
-        <!-- Spring AI (可替换为其他LLM客户端) -->
+        <!-- OkHttp for Ollama API -->
         <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
-            <version>${spring-ai.version}</version>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.12.0</version>
+        </dependency>
+        
+        <!-- Jackson for JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
         
         <!-- Swagger -->
