@@ -5,25 +5,51 @@ spring:
   application:
     name: ops-copilot
   
-  # 数据库配置 (如无数据库可注释)
+  # 数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ops_copilot?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/ops_copilot?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
     username: root
     password: root
+  
+  # MyBatis Plus配置
+  mybatis-plus:
+    configuration:
+      map-underscore-to-camel-case: true
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    global-config:
+      db-config:
+        id-type: auto
 
 # Ollama配置
 ollama:
   base-url: http://localhost:11434
   model: qwen3.5:9B
 
-# MyBatis Plus配置
-mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
-  global-config:
-    db-config:
-      id-type: auto
+# 运维系统API配置
+ops-system:
+  # 监控系统 (Zabbix/Prometheus/SkyWalking)
+  monitor:
+    enabled: false
+    api-url: http://localhost:8080/api
+    api-key: your-monitor-api-key
+  
+  # CMDB配置
+  cmdb:
+    enabled: false
+    api-url: http://localhost:8080/api
+    api-key: your-cmdb-api-key
+  
+  # 工单系统
+  ticket:
+    enabled: false
+    api-url: http://localhost:8080/api
+    api-key: your-ticket-api-key
+  
+  # 知识库
+  knowledge:
+    enabled: true
+    vector-enabled: false
 
 # Swagger配置
 springdoc:
@@ -34,4 +60,12 @@ springdoc:
 
 # 业务配置
 ops-copilot:
-  version: MVP
+  version: 2.1
+  name: OpsCopilot运维智能体
+  features:
+    alert-enabled: true
+    asset-enabled: true
+    ticket-enabled: true
+    knowledge-enabled: true
+    dashboard-enabled: true
+    prediction-enabled: true

@@ -444,17 +444,42 @@ public class ChatService {
     }
     
     /**
-     * 处理通用问题
+     * 处理通用问题 - 只有真正需要AI的问题才调用Ollama
      */
     private ChatResponse handleGeneralQuestion(String message, List<String> history) {
-        // 添加历史
-        history.add(message);
+        // 检查是否真的需要AI回答
+        if (needsAI(message)) {
+            history.add(message);
+            String aiResponse = ollamaService.chat(message);
+            return ChatResponse.builder()
+                    .content(aiResponse)
+                    .build();
+        }
         
-        // 调用AI
-        String aiResponse = ollamaService.chat(message, history);
-        
+        // 简单问题直接返回引导
         return ChatResponse.builder()
-                .content(aiResponse)
+                .content("""
+                    我可以帮你完成以下操作：
+                    
+                    🔍 **查询告警** - "最近有哪些严重告警？"
+                    📊 **数据统计** - "本周告警数量多少？"
+                    💻 **查询资产** - "给我们部门所有MySQL服务器"
+                    📝 **创建工单** - "帮我申请开通数据库权限"
+                    📚 **知识问答** - "Redis连接数满了怎么解决？"
+                    
+                    请直接说出你的需求，或点击左侧菜单查看各模块数据。
+                    """)
                 .build();
+    }
+    
+    /**
+     * 判断是否需要AI处理
+     */
+    private boolean needsAI(String message) {
+        String lower = message.toLowerCase();
+        // 真正需要AI回答的问题
+        return lower.contains("怎么办") || lower.contains("怎么处理") 
+                || lower.contains("为什么") || lower.contains("如何优化")
+                || lower.contains("建议") || lower.contains("分析一下");
     }
 }

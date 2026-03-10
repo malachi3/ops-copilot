@@ -3,7 +3,6 @@ package com.opscopilot.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.opscopilot.dto.Result;
 import com.opscopilot.model.Knowledge;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,6 @@ import java.util.*;
  */
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class KnowledgeService {
     
     // 知识库数据（生产环境应从数据库查询）
